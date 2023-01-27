@@ -28,7 +28,9 @@
     "build": "react-scripts build",
     "prettier": "prettier --write .",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "husky install",
+    "preinstall": "npx only-allow yarn"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +50,20 @@
       "last 1 safari version"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
     "prettier": "^2.8.3"
   }
 }
