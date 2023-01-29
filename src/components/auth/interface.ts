@@ -1,3 +1,5 @@
+import { Me } from './login/interface'
+
 export interface AuthReducerState {
-  value: number
+  me: Me | null
 }
