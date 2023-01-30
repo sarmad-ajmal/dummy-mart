@@ -6,6 +6,12 @@ import {
   Outlet,
 } from 'react-router-dom'
 
+import DefaultRedirectRoute from './routes/default_redirect_route'
+import PrivateRoute from './routes/private_route'
+import PublicRoute from './routes/public_route'
+
+import { ROUTES } from './routes/routes'
+
 const LoginPage = lazy(() =>
   import('./components/auth').then(module => ({ default: module.LoginPage })),
 )
@@ -25,18 +31,25 @@ function App() {
           }}
         >
           <Routes>
-            <Route path='*' element={<LoginPage />} />
+            <Route
+              path={ROUTES.LOGIN}
+              element={<PublicRoute component={() => <LoginPage />} />}
+            />
             <Route
               path='/secure/*'
               element={
-                <div>
-                  {' '}
-                  <Outlet />
-                </div>
+                <PrivateRoute>
+                  <div>
+                    {' '}
+                    <Outlet />
+                  </div>
+                </PrivateRoute>
               }
             >
-              <Route path='hi' element={<ProductsPage />} />
+              <Route path={ROUTES.PRODUCTS} element={<ProductsPage />} />
+              <Route path='*' element={<DefaultRedirectRoute />} />
             </Route>
+            <Route path='*' element={<DefaultRedirectRoute />} />
           </Routes>
         </Suspense>
       </Router>
