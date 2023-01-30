@@ -1,10 +1,6 @@
 import React, { lazy, Suspense } from 'react'
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router,
-  Outlet,
-} from 'react-router-dom'
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+import { DefaultLayout } from './layouts'
 
 import DefaultRedirectRoute from './routes/default_redirect_route'
 import PrivateRoute from './routes/private_route'
@@ -39,10 +35,7 @@ function App() {
               path='/secure/*'
               element={
                 <PrivateRoute>
-                  <div>
-                    {' '}
-                    <Outlet />
-                  </div>
+                  <DefaultLayout />
                 </PrivateRoute>
               }
             >

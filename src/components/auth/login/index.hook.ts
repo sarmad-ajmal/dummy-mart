@@ -14,7 +14,7 @@ const useLogin = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const onChageEmail = (e: any) => {
+  const onChangeEmail = (e: any) => {
     setEmail(e.target.value)
   }
   const onChangePassword = (e: any) => {
@@ -38,7 +38,7 @@ const useLogin = () => {
     loginUser()
   }
 
-  return { email, password, handleSubmit, onChageEmail, onChangePassword }
+  return { email, password, handleSubmit, onChangeEmail, onChangePassword }
 }
 
 export default useLogin

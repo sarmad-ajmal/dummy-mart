@@ -15,10 +15,7 @@ export interface IPrivateRouteProps {}
 export interface IRouteType {
   id: string
   title: string
-  iconName: string
   url: string
-  extraUrls?: string[]
-  count: number
 }
 
 export type IRouteListType = IRouteType[]

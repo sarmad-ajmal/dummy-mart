@@ -26,7 +26,9 @@ const useProductsList = () => {
     }
   }
   useEffect(() => {
-    fetchProducts()
+    if (!products.length) {
+      fetchProducts()
+    }
   }, [])
   return { products }
 }
