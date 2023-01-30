@@ -3,6 +3,7 @@ import storage from 'redux-persist/lib/storage'
 import { persistReducer, persistStore } from 'redux-persist'
 
 import authReducer from '../slices/auth.slice'
+import productsSlice from '../slices/products.slice'
 
 const persistConfig = {
   key: 'root',
@@ -11,7 +12,10 @@ const persistConfig = {
 const persistedAuthReducer = persistReducer(persistConfig, authReducer)
 
 export const store = configureStore({
-  reducer: { auth: persistedAuthReducer },
+  reducer: {
+    auth: persistedAuthReducer,
+    products: productsSlice,
+  },
   devTools: process.env.NODE_ENV !== 'production',
 })
 export const persistor = persistStore(store)

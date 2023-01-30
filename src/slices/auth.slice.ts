@@ -7,7 +7,7 @@ const initialState: AuthReducerState = {
   me: null,
 }
 
-export const counterSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -18,6 +18,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setMe } = counterSlice.actions
+export const { setMe } = authSlice.actions
 
-export default counterSlice.reducer
+export default authSlice.reducer

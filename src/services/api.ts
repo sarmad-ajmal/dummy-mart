@@ -10,8 +10,10 @@ export class APIService {
     baseURL: 'https://dummyjson.com/',
     headers: { 'Content-Type': 'application/json' },
   })
-  get(url: string, params?: {}, axiosConfig?: AxiosRequestConfig) {
-    this.api.get(url, params, axiosConfig)
+  async get(url: string, params?: {}, axiosConfig?: AxiosRequestConfig) {
+    const res = await this.api.get(url, params, axiosConfig)
+    const resData = await this.processResponse(res, false)
+    return resData
   }
   async post(url: string, data?: any, config?: AxiosRequestConfig) {
     const res = await this.api.post(url, data, config)
