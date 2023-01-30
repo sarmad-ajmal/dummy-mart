@@ -1,6 +1,8 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch } from '../../../redux/redux.hooks'
+import { URLS } from '../../../routes/routes'
 import { APIService } from '../../../services/api'
 
 import { getLoggedinUser } from '../../../slices/auth.slice'
@@ -8,20 +10,35 @@ import { ILoggedinUser } from '../interface'
 
 const useLogin = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const onChageEmail = (e: any) => {
+    setEmail(e.target.value)
+  }
+  const onChangePassword = (e: any) => {
+    setPassword(e.target.value)
+  }
   const loginUser = async () => {
-    const api = new APIService()
-    const { res, error } = await api.post('/auth/login', {
-      username: 'kminchelle',
-      password: '0lelplR',
-    })
-    if (!error) {
-      dispatch(getLoggedinUser(res as ILoggedinUser))
+    if (!!email.trim() && !!password.trim()) {
+      const api = new APIService()
+      const { res, error } = await api.post('/auth/login', {
+        username: email,
+        password: password,
+      })
+      if (!error) {
+        dispatch(getLoggedinUser(res as ILoggedinUser))
+        navigate(URLS.PRODUCTS)
+      }
     }
   }
-  useEffect(() => {
+  const handleSubmit = (event: any) => {
+    event.preventDefault()
     loginUser()
-  }, [])
-  return {}
+  }
+
+  return { email, password, handleSubmit, onChageEmail, onChangePassword }
 }
 
 export default useLogin
