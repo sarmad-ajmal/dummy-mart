@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
+
 import { useAppDispatch } from '../../../redux/redux.hooks'
 import { APIService } from '../../../services/api'
-import { setMe } from '../../../slices/auth.slice'
-import { Me } from './interface'
+
+import { getLoggedinUser } from '../../../slices/auth.slice'
+import { ILoggedinUser } from '../interface'
 
 const useLogin = () => {
   const dispatch = useAppDispatch()
@@ -13,7 +15,7 @@ const useLogin = () => {
       password: '0lelplR',
     })
     if (!error) {
-      dispatch(setMe(res as Me))
+      dispatch(getLoggedinUser(res as ILoggedinUser))
     }
   }
   useEffect(() => {

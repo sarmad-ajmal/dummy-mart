@@ -1,4 +1,5 @@
 import React from 'react'
+
 import useProductsList from './index.hook'
 
 const ProductsList = () => {

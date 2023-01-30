@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
+
 import { useAppDispatch, useAppSelector } from '../../../redux/redux.hooks'
 import { APIService } from '../../../services/api'
+
 import { getProducts } from '../../../slices/products.slice'
 
 const useProductsList = () => {

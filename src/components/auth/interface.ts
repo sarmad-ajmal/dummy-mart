@@ -1,5 +1,13 @@
-import { Me } from './login/interface'
-
 export interface AuthReducerState {
-  me: Me | null
+  me: ILoggedinUser | null
+}
+export interface ILoggedinUser {
+  id: number
+  username: string
+  email: string
+  firstName: string
+  lastName: string
+  gender: string
+  image: string
+  token: string
 }
