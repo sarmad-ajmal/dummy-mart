@@ -12,7 +12,7 @@ const PrivateRoute: React.FC<IPrivateRouteProps> = ({ children, ...rest }) => {
     if (!isLogin) {
       navigate('/login', { replace: true })
     }
-  }, [isLogin])
+  }, [isLogin, navigate])
   return <>{children}</>
 }
 
