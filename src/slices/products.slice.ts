@@ -12,7 +12,9 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     getProducts: (state, action: PayloadAction<ProductsReducerState>) => {
-      state.products = action.payload.products
+      state.products = !state.products.length
+        ? action.payload.products
+        : [...state.products, ...action.payload.products]
       state.meta.total = action.payload.meta?.total
     },
   },

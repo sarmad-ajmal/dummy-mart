@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/redux.hooks'
 import { APIService } from '../../../services/api'
 
 import { getProducts } from '../../../slices/products.slice'
+import { ProductsReducerState } from '../interface'
 
 const useProductsList = () => {
   const dispatch = useAppDispatch()
@@ -17,7 +18,15 @@ const useProductsList = () => {
       skip: products.length,
     })
     if (!error) {
-      dispatch(getProducts(res))
+      const { products = [], total = 0 } = res
+      const payload: ProductsReducerState = {
+        products,
+        meta: {
+          total,
+        },
+      }
+
+      dispatch(getProducts(payload))
     }
   }
   const onNext = () => {
@@ -30,6 +39,6 @@ const useProductsList = () => {
       fetchProducts()
     }
   }, [])
-  return { products }
+  return { products, onNext }
 }
 export default useProductsList

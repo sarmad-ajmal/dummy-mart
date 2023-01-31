@@ -16,6 +16,7 @@
     "query-string": "^8.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.9.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-query": "^3.39.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.2.1",
