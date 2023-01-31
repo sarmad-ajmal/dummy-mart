@@ -1,9 +1,10 @@
 import { IRouteListType } from './interface'
 
 export enum URLS {
+  LOGIN = '/login',
   DEFAULT = '/secure/products',
   PRODUCTS = '/secure/products',
-  LOGIN = '/login',
+  USERS = '/secure/users',
 }
 
 export enum ROUTES {
@@ -14,12 +15,12 @@ export enum ROUTES {
 export const navRouteList: IRouteListType = [
   {
     id: '1',
-    title: 'Producuts',
+    title: 'Products',
     url: URLS.PRODUCTS,
   },
   {
     id: '2',
     title: 'Users',
-    url: URLS.PRODUCTS,
+    url: URLS.USERS,
   },
 ]
